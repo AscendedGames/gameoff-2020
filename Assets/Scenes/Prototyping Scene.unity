@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015f073ae96fe414d8ed64641f1e9a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 749128584}
   MovementSpeed: 6
   JumpForce: 6
   fallMultiplier: 2.5
