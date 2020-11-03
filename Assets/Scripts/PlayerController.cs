@@ -4,11 +4,13 @@ public class PlayerController : MonoBehaviour
 {
     public float MovementSpeed = 10; // Floating point variable to store the player's movement speed.
     public float JumpForce = 5; // Floating point variable to store the player's jump force.
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
 
-    bool isGrounded = false;
-    public Transform isGroundedChecker;
-    public float checkGroundRadius;
-    public LayerMask groundLayer;
+    bool isGrounded = false; // This boolean lets us determine if the player's feet are on the ground or not.
+    public Transform isGroundedChecker; // This variable holds the empty GameObject that acts as our ground checker.
+    public float checkGroundRadius; // Floating point variable to store the radius of the ground checker.
+    public LayerMask groundLayer; // This variable determines the ground layer to enable the groundChecker to let us know we're on the ground
 
     private Rigidbody2D rigidBody; // Initialize the Rigidbody2D variable to be used later.
 
@@ -27,8 +29,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        Jump();
         CheckIfGrounded();
+        Jump();
+        JumpSmoothing();
     }
 
     /// <summary>
@@ -68,4 +71,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void JumpSmoothing()
+    {
+        if (rigidBody.velocity.y < 0)
+        {
+            rigidBody.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rigidBody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rigidBody.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+    }
 }
