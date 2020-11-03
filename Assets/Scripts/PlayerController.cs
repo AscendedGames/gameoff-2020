@@ -4,8 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public float MovementSpeed = 10; // Floating point variable to store the player's movement speed.
     public float JumpForce = 5; // Floating point variable to store the player's jump force.
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
+    public float fallMultiplier = 2.5f; // Gravity multiplier to help our jumping feel more polished.
+    public float lowJumpMultiplier = 2f; // Allows the player to make smaller jumps by holding the Jump key for less time.
 
     bool isGrounded = false; // This boolean lets us determine if the player's feet are on the ground or not.
     public Transform isGroundedChecker; // This variable holds the empty GameObject that acts as our ground checker.
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// This is the method that provides the player the ability to move.
+    /// Provides the player the ability to move.
     /// </summary>
     void Move()
     {
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// This is the method that provides the player the ability to jump.
+    /// Provides the player the ability to jump.
     /// </summary>
     void Jump()
     {
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// This method checks if the player is on the ground. It is mainly used to determine if they can jump or not.
+    /// Checks if the player is on the ground. It is mainly used to determine if they can jump or not.
     /// </summary>
     void CheckIfGrounded()
     {
@@ -71,6 +71,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Makes
+    /// </summary>
     void JumpSmoothing()
     {
         if (rigidBody.velocity.y < 0)
