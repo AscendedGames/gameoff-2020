@@ -1,33 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 
 public class PlayerController : MonoBehaviour
 {
 
-    public float speed; // Floating point variable to store the player's movement speed.
+    public float MovementSpeed = 10; // Floating point variable to store the player's movement speed.
+    public float JumpForce = 5; // Floating point variable to store the player's jump force.
 
-    private Rigidbody2D rb2d; //Store a reference to the Rigidbody2D component required to use 2D Physics.
+    private Rigidbody2D rigidBody;
 
     // Use this for initialization
     void Start()
     {
         // Get and store a reference to the Rigidbody2D component so that we can access it.
-        rb2d = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     // FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
-    void FixedUpdate()
+    void Update()
     {
-        // Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        Move();
 
-        // Store the current vertical input in the float moveVertical.
-        float moveVertical = Input.GetAxis("Vertical");
+        Jump();
+    }
 
-        // Use the two store floats to create a new Vector2 variable movement.
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+    void Move()
+    {
+        // Assign the Horizontal movement key to a variable
+        var moveHorizontal = Input.GetAxis("Horizontal");
 
-        // Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-        rb2d.AddForce(movement * speed);
+        float movement = moveHorizontal * MovementSpeed;
+        rigidBody.velocity = new Vector2(movement, rigidBody.velocity.y);
+
+        // Apply the movement, multiplying by Time.DeltaTime to smooth out movement, then multiply by MovementSpeed.
+        //transform.rotation = transform.rotation + new Vector3(moveHorizontal, 0, 0) * Time.deltaTime * MovementSpeed;
+
+        //if (Mathf.Approximately(0, moveHorizontal)) transform.rotation = moveHorizontal > 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
+    }
+
+    void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && Mathf.Abs(rigidBody.velocity.y) < 0.001f)
+        {
+            rigidBody.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+        }
     }
 }
