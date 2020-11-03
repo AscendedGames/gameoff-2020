@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float MovementSpeed = 10; // Floating point variable to store the player's movement speed.
     public float JumpForce = 5; // Floating point variable to store the player's jump force.
 
-    private Rigidbody2D rigidBody;
+    public Rigidbody2D rigidBody;
 
     // Use this for initialization
     void Start()
