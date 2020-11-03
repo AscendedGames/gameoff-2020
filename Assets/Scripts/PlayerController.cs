@@ -2,6 +2,8 @@
 
 public class PlayerController : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
+
     public float MovementSpeed = 10; // Floating point variable to store the player's movement speed.
     public float JumpForce = 5; // Floating point variable to store the player's jump force.
     public float fallMultiplier = 2.5f; // Gravity multiplier to help our jumping feel more polished.
@@ -34,6 +36,10 @@ public class PlayerController : MonoBehaviour
         CheckIfGrounded();
         Jump();
         JumpSmoothing();
+
+        // =============== NOTE: REMOVE THIS WHEN WE GET REAL ANIMATIONS ===============
+        if (Input.GetAxis("Horizontal") < 0) spriteRenderer.flipX = true;
+        else if (Input.GetAxis("Horizontal") > 0) spriteRenderer.flipX = false;
     }
 
     /// <summary>
