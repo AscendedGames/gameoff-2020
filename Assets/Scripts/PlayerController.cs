@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public Transform isGroundedChecker; // This variable holds the empty GameObject that acts as our ground checker.
     public float checkGroundRadius; // Floating point variable to store the radius of the ground checker.
     public LayerMask groundLayer; // This variable determines the ground layer to enable the groundChecker to let us know we're on the ground
+    public float rememberGroundedFor; // Helps keep player grounded to allow jumps slightly after the player has run off of a ledge
+    float lastTimeGrounded; // Floating point variable to remember the last time the player was grounded
 
     private Rigidbody2D rigidBody; // Initialize the Rigidbody2D variable to be used later.
 
@@ -52,7 +54,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded) rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpForce);
+        if (Input.GetButtonDown("Jump") && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpForce);
+        }
     }
 
     /// <summary>
@@ -67,12 +72,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if (isGrounded)
+            {
+                lastTimeGrounded = Time.time;
+            }
             isGrounded = false;
         }
     }
 
     /// <summary>
-    /// Makes
+    /// Helps to polish the jumping physics a bit. Adds functionality
     /// </summary>
     void JumpSmoothing()
     {
