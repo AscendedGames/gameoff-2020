@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class NPCScientistController : MonoBehaviour
+public class NPCPatrolController : MonoBehaviour
 {
     public float MovementSpeed;
-    public bool MoveRight = true;
+    public bool MoveRightFirst = true;
 
     void Update()
     {
-        if (MoveRight)
+        if (MoveRightFirst)
         {
             transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
         }
@@ -19,10 +19,10 @@ public class NPCScientistController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name.Contains("Prototype Scientist Boundary"))
+        if (collision.gameObject.name.Contains("Prototype Scientist Boundary"))
         {
-            if (MoveRight) MoveRight = false;
-            else MoveRight = true;
+            if (MoveRightFirst) MoveRightFirst = false;
+            else MoveRightFirst = true;
         }
     }
 }
