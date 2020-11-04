@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class NPCScientistController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float MovementSpeed;
+    public bool MoveRight = true;
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
