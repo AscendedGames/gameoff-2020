@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NPCScientistController : MonoBehaviour
 {
@@ -9,6 +7,22 @@ public class NPCScientistController : MonoBehaviour
 
     void Update()
     {
+        if (MoveRight)
+        {
+            transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
+        }
+        else
+        {
+            transform.Translate(-2 * Time.deltaTime * MovementSpeed, 0, 0);
+        }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name.Contains("Prototype Scientist Boundary"))
+        {
+            if (MoveRight) MoveRight = false;
+            else MoveRight = true;
+        }
     }
 }
