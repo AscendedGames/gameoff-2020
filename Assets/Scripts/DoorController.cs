@@ -4,35 +4,42 @@ public class DoorController : MonoBehaviour
 {
     public float HoldOpenForSeconds;
 
-    GameObject readonly door;
-    bool initiateDoorActuation = false;
-    bool isDoorOpen = false;
-    float holdOpenForSeconds;
+    private GameObject door;
+    private bool isDoorOpen = false;
+    private bool isDoorClosing = false;
+    private float holdOpenForSeconds;
+    private Animator doorAnimation;
 
     void Start()
     {
-
+        door = transform.parent.gameObject;
+        doorAnimation = door.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (isDoorClosing && isDoorOpen)
+        {
+            if (holdOpenForSeconds > 0)
+            {
+                holdOpenForSeconds -= Time.deltaTime;
+            }
+            else CloseDoor();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Contains("Scientist"))
         {
+            isDoorClosing = false;
+
             if (!isDoorOpen)
             {
-                distanceToActuate = DistanceToActuate;
-                openUnitsPerFrame = OpenUnitsPerFrame;
-                initiateDoorActuation = true;
-
-                Debug.Log($"distanceToActuate set to {distanceToActuate}");
-                Debug.Log($"openUnitsPerFrame set to {openUnitsPerFrame}");
-                Debug.Log($"isDoorOpen set to {isDoorOpen}");
+                holdOpenForSeconds = HoldOpenForSeconds;
+                doorAnimation.Play("DoorOpenAnimation");
+                isDoorOpen = true;
             }
         }
     }
@@ -43,32 +50,16 @@ public class DoorController : MonoBehaviour
         {
             if (isDoorOpen)
             {
-                doorOpenForSeconds = HoldOpenForSeconds;
-                distanceToActuate = DistanceToActuate;
-                closeUnitsPerFrame = CloseUnitsPerFrame;
-                isDoorOpen = false;
-
-                Debug.Log($"doorOpenForSeconds set to {doorOpenForSeconds}");
-                Debug.Log($"distanceToActuate set to {distanceToActuate}");
-                Debug.Log($"closeUnitsPerFrame set to {closeUnitsPerFrame}");
-                Debug.Log($"isDoorOpen set to {isDoorOpen}");
+                holdOpenForSeconds = HoldOpenForSeconds;
+                isDoorClosing = true;
             }
         }
     }
 
-    void PerformOpenDoor()
+    private void CloseDoor()
     {
-        Debug.Log("PerformDoorOpen() called");
-
-        distanceToActuate -= openUnitsPerFrame;
-
-        door.transform.Translate(0, OpenUnitsPerFrame * Time.deltaTime * OpenSpeed, 0);
-    }
-
-    void PerformCloseDoor()
-    {
-        Debug.Log("PerformDoorClose() called");
-
-        door.transform.Translate(0, CloseUnitsPerFrame * Time.deltaTime * OpenSpeed, 0);
+        isDoorOpen = false;
+        doorAnimation.Play("DoorCloseAnimation");
+        holdOpenForSeconds = HoldOpenForSeconds;
     }
 }
