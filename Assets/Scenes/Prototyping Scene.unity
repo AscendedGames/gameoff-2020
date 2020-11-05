@@ -765,7 +765,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MouseRun: {fileID: 749128589}
-  stepDelay: 0.157
+  stepSoundDelay: 0.157
+  isGroundedChecker: {fileID: 1795089198}
+  checkGroundRadius: 0.05
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &807429009
 GameObject:
   m_ObjectHideFlags: 0
