@@ -2960,7 +2960,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1.5823678, y: 0.13622403}
@@ -3209,6 +3209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementSpeed: 0.5
   MoveRightFirst: 0
+  spriteRenderer: {fileID: 1940527336}
+  smooth: 1
 --- !u!1 &2057456191
 GameObject:
   m_ObjectHideFlags: 0
