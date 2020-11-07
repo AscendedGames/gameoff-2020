@@ -5,15 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitchControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public void BtnNewGame()
+    public void BtnNewGame() //Load the Game
     {
         SceneManager.LoadScene("Prototyping Scene");
     }
 
-    public void BtnQuitGame()
+    public void BtnMainMenu() //Load the Main Menu
     {
-        Debug.Log("It quit.?");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void BtnOptions() //Access the Options Menu
+    {
+        SceneManager.LoadScene("OptionsMenu");
+    }
+
+    public void BtnCredits() //Access the Credits Menu
+    {
+        SceneManager.LoadScene("CreditsMenu");
+    }
+
+    public void BtnQuitGame() //Exit Application
+    {
         Application.Quit();
     }
 }
