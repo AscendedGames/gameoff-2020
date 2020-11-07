@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class HidingController : MonoBehaviour
 {
     public Text HiddenText;
+    public Text DetectedText;
 
     [HideInInspector]
     public bool isMouseHidden = false;
@@ -11,7 +12,7 @@ public class HidingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DetectedText.enabled = false;
     }
 
     // Update is called once per frame

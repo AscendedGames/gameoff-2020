@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Level
   - Hideable
+  - Enemy
+  - Trigger
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VisionController : MonoBehaviour
 {
-    public GameObject PlayerMouse;
+    public GameObject Player;
     public GameObject NPCEyes;
 
     private bool isPlayerInRange;
@@ -22,15 +22,16 @@ public class VisionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CanPlayerBeSeen())
+        if (CanPlayerBeSeen() && !Player.GetComponent<HidingController>().isMouseHidden)
         {
-            Debug.Log("DETECTED!");
+            Player.GetComponent<HidingController>().DetectedText.enabled = true;
         }
+        else Player.GetComponent<HidingController>().DetectedText.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.Equals(PlayerMouse) && PlayerMouse.GetComponent<HidingController>().isMouseHidden == false)
+        if (collision.gameObject.Equals(Player) && Player.GetComponent<HidingController>().isMouseHidden == false)
         {
             isPlayerInRange = true;
         }
@@ -38,7 +39,7 @@ public class VisionController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.Equals(PlayerMouse))
+        if (collision.gameObject.Equals(Player))
         {
             isPlayerInRange = false;
         }
@@ -46,8 +47,8 @@ public class VisionController : MonoBehaviour
 
     bool PlayerInFieldOfView()
     {
-        Vector2 directionToPlayer = PlayerMouse.transform.position - NPCEyes.transform.position;
-        Debug.DrawLine(NPCEyes.transform.position, PlayerMouse.transform.position, Color.white);
+        Vector2 directionToPlayer = Player.transform.position - NPCEyes.transform.position;
+        Debug.DrawLine(NPCEyes.transform.position, Player.transform.position, Color.white);
 
         Vector2 lineOfSight = lineOfSightEnd.position - NPCEyes.transform.position;
         Debug.DrawLine(NPCEyes.transform.position, lineOfSightEnd.position, Color.cyan);
@@ -55,7 +56,9 @@ public class VisionController : MonoBehaviour
         float angle = Vector2.Angle(directionToPlayer, lineOfSight);
 
         if (angle < 170)
+        {
             return true;
+        }
         else
             return false;
     }
@@ -78,27 +81,22 @@ public class VisionController : MonoBehaviour
 
     bool PlayerHiddenByObstacles()
     {
-
-        float distanceToPlayer = Vector2.Distance(NPCEyes.transform.position, PlayerMouse.transform.position);
-        RaycastHit2D[] hits = Physics2D.RaycastAll(NPCEyes.transform.position, PlayerMouse.transform.position - NPCEyes.transform.position, distanceToPlayer);
-        Debug.DrawRay(NPCEyes.transform.position, PlayerMouse.transform.position - transform.position, Color.blue);
+        float distanceToPlayer = Vector2.Distance(NPCEyes.transform.position, Player.transform.position);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(NPCEyes.transform.position, Player.transform.position - NPCEyes.transform.position, distanceToPlayer);
+        Debug.DrawRay(NPCEyes.transform.position, Player.transform.position - NPCEyes.transform.position, Color.blue);
         List<float> distances = new List<float>();
 
         foreach (RaycastHit2D hit in hits)
         {
-            // ignore the enemy's own colliders (and other enemies)
-            if (hit.transform.tag == "Enemy")
+            if (hit.transform.tag == "Enemy" || hit.transform.tag == "Trigger")
                 continue;
 
-            // if anything other than the player is hit then it must be between the player and the enemy's eyes (since the player can only see as far as the player)
             if (hit.transform.tag != "Player")
             {
                 return true;
             }
         }
 
-        // if no objects were closer to the enemy than the player return false (player is not hidden by an object)
         return false;
-
     }
 }
