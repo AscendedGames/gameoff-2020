@@ -3,26 +3,25 @@
 public class NPCPatrolController : MonoBehaviour
 {
     public float MovementSpeed;
-    public bool MoveRightFirst = true;
+    public SpriteRenderer spriteRenderer;
+
+    private BoxCollider2D npcBodyCollider;
+
+    private void Start()
+    {
+        npcBodyCollider = GetComponent<BoxCollider2D>();
+    }
 
     void Update()
     {
-        if (MoveRightFirst)
-        {
-            transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
-        }
-        else
-        {
-            transform.Translate(-2 * Time.deltaTime * MovementSpeed, 0, 0);
-        }
+        transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Contains("Prototype Scientist Boundary"))
+        if (collision.gameObject.name.Contains("Prototype Scientist Boundary") && npcBodyCollider.IsTouching(collision))
         {
-            if (MoveRightFirst) MoveRightFirst = false;
-            else MoveRightFirst = true;
+            transform.localRotation *= Quaternion.Euler(0, 180, 0);
         }
     }
 }
