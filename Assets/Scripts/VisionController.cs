@@ -8,7 +8,6 @@ public class VisionController : MonoBehaviour
     public GameObject NPCEyes;
 
     private bool isPlayerInRange;
-    private bool isVisionBlocked;
 
     [SerializeField]
     private Transform lineOfSightEnd;
@@ -31,7 +30,7 @@ public class VisionController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.Equals(Player) && Player.GetComponent<HidingController>().isMouseHidden == false)
+        if (collision.gameObject.Equals(Player))
         {
             isPlayerInRange = true;
         }

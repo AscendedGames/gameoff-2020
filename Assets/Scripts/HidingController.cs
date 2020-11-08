@@ -7,11 +7,12 @@ public class HidingController : MonoBehaviour
     public Text DetectedText;
 
     [HideInInspector]
-    public bool isMouseHidden = false;
+    public bool isMouseHidden;
 
     // Start is called before the first frame update
     void Start()
     {
+        isMouseHidden = false;
         DetectedText.enabled = false;
     }
 
