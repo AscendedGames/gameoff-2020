@@ -15,11 +15,19 @@ public class NPCPatrolController : MonoBehaviour
     private bool _hasBrokenPursuit;
 
     private NPCPursuitController npcPursuitController;
+    private GameObject OverheadStatus;
+    private GameObject VisionDetector;
+    private SpriteRenderer overheadStatus;
+    private VisionController visionController;
 
     private void Start()
     {
+        OverheadStatus = transform.Find("OverheadStatus").gameObject;
+        VisionDetector = transform.Find("VisionDetector").gameObject;
+        visionController = VisionDetector.GetComponent<VisionController>();
         npcBodyCollider = GetComponent<BoxCollider2D>();
         npcPursuitController = GetComponent<NPCPursuitController>();
+        overheadStatus = OverheadStatus.GetComponent<SpriteRenderer>();
         hasGonePastCollider = false;
         _brokenPursuitPauseTimer = npcPursuitController.BrokenPursuitPauseTime;
     }
@@ -41,6 +49,7 @@ public class NPCPatrolController : MonoBehaviour
             if (_brokenPursuitPauseTimer > 0)
             {
                 transform.Translate(0, 0, 0);
+                overheadStatus.sprite = visionController.SearchingSprite;
             }
             else
             {
