@@ -751,6 +751,7 @@ GameObject:
   - component: {fileID: 749128584}
   - component: {fileID: 749128586}
   - component: {fileID: 749128588}
+  - component: {fileID: 749128592}
   - component: {fileID: 749128589}
   - component: {fileID: 749128587}
   - component: {fileID: 749128590}
@@ -885,8 +886,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0014, y: 1.6085977e-10}
-  m_Size: {x: 0.3323017, y: 0.21000145}
+  m_Offset: {x: 0.0013742301, y: 0.001493819}
+  m_Size: {x: 0.3378503, y: 0.20701413}
   m_Direction: 1
 --- !u!82 &749128589
 AudioSource:
@@ -1018,6 +1019,22 @@ MonoBehaviour:
   HiddenText: {fileID: 979191999}
   DetectedText: {fileID: 716811934}
   isMouseHidden: 0
+--- !u!70 &749128592
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749128583}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d01a9f7485c82e046b4dd6aa56ee6e05, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0011606218, y: -0.00000013424882}
+  m_Size: {x: 0.3553503, y: 0.18353994}
+  m_Direction: 1
 --- !u!1 &807429009
 GameObject:
   m_ObjectHideFlags: 0
