@@ -7,15 +7,16 @@ public class VisionController : MonoBehaviour
     public GameObject Player;
     public GameObject NPCEyes;
 
-    private bool isPlayerInRange;
-
-    [SerializeField]
-    private Transform lineOfSightEnd;
+    [HideInInspector]
+    public bool IsPlayerDetected;
+    [HideInInspector]
+    public bool IsPlayerInRange;
 
     // Start is called before the first frame update
     void Start()
     {
-        isPlayerInRange = false;
+        IsPlayerInRange = false;
+        IsPlayerDetected = false;
     }
 
     // Update is called once per frame
@@ -24,15 +25,20 @@ public class VisionController : MonoBehaviour
         if (CanPlayerBeSeen() && !Player.GetComponent<HidingController>().isMouseHidden)
         {
             Player.GetComponent<HidingController>().DetectedText.enabled = true;
+            IsPlayerDetected = true;
         }
-        else Player.GetComponent<HidingController>().DetectedText.enabled = false;
+        else
+        {
+            Player.GetComponent<HidingController>().DetectedText.enabled = false;
+            IsPlayerDetected = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.Equals(Player))
         {
-            isPlayerInRange = true;
+            IsPlayerInRange = true;
         }
     }
 
@@ -40,42 +46,15 @@ public class VisionController : MonoBehaviour
     {
         if (collision.gameObject.Equals(Player))
         {
-            isPlayerInRange = false;
+            IsPlayerInRange = false;
+            IsPlayerDetected = false;
         }
-    }
-
-    bool PlayerInFieldOfView()
-    {
-        Vector2 directionToPlayer = Player.transform.position - NPCEyes.transform.position;
-        Debug.DrawLine(NPCEyes.transform.position, Player.transform.position, Color.white);
-
-        Vector2 lineOfSight = lineOfSightEnd.position - NPCEyes.transform.position;
-        Debug.DrawLine(NPCEyes.transform.position, lineOfSightEnd.position, Color.cyan);
-
-        float angle = Vector2.Angle(directionToPlayer, lineOfSight);
-
-        if (angle < 170)
-        {
-            return true;
-        }
-        else
-            return false;
     }
 
     bool CanPlayerBeSeen()
     {
-        if (isPlayerInRange)
-        {
-            if (PlayerInFieldOfView())
-                return (!PlayerHiddenByObstacles());
-            else
-                return false;
-
-        }
-        else
-        {
-            return false;
-        }
+        if (IsPlayerInRange && !PlayerHiddenByObstacles()) return true;
+        else return false;
     }
 
     bool PlayerHiddenByObstacles()
