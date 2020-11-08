@@ -7,21 +7,22 @@ public class NPCPursuitController : MonoBehaviour
     public float PursuitSpeed;
     public GameObject VisionDetector;
     public Text GameOverText;
+    public float BrokenPursuitPauseTime;
 
     [HideInInspector]
-    public bool isNPCInPursuit;
+    public bool IsInPursuit;
+    [HideInInspector]
+    public bool HasBrokenPursuit;
 
     private bool isPlayerInSight;
-    private Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
         GameOverText.enabled = false;
         isPlayerInSight = false;
-        isNPCInPursuit = false;
-
-        rigidBody = GetComponent<Rigidbody2D>();
+        IsInPursuit = false;
+        HasBrokenPursuit = false;
     }
 
     // Update is called once per frame
@@ -31,8 +32,13 @@ public class NPCPursuitController : MonoBehaviour
 
         if (isPlayerInSight)
         {
-            isNPCInPursuit = true;
+            IsInPursuit = true;
             PursuePlayer();
+        }
+        else
+        {
+            if (IsInPursuit) HasBrokenPursuit = true;
+            IsInPursuit = false;
         }
     }
 
@@ -48,5 +54,10 @@ public class NPCPursuitController : MonoBehaviour
     {
         //transform.LookAt(Player);
         transform.Translate(2 * Time.deltaTime * PursuitSpeed, 0, 0);
+    }
+
+    public void ResetHasBrokenPursuit()
+    {
+        HasBrokenPursuit = false;
     }
 }
