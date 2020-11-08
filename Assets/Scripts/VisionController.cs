@@ -8,15 +8,15 @@ public class VisionController : MonoBehaviour
     public GameObject NPCEyes;
 
     [HideInInspector]
-    public bool isPlayerDetected;
-
-    private bool isPlayerInRange;
+    public bool IsPlayerDetected;
+    [HideInInspector]
+    public bool IsPlayerInRange;
 
     // Start is called before the first frame update
     void Start()
     {
-        isPlayerInRange = false;
-        isPlayerDetected = false;
+        IsPlayerInRange = false;
+        IsPlayerDetected = false;
     }
 
     // Update is called once per frame
@@ -25,12 +25,12 @@ public class VisionController : MonoBehaviour
         if (CanPlayerBeSeen() && !Player.GetComponent<HidingController>().isMouseHidden)
         {
             Player.GetComponent<HidingController>().DetectedText.enabled = true;
-            isPlayerDetected = true;
+            IsPlayerDetected = true;
         }
         else
         {
             Player.GetComponent<HidingController>().DetectedText.enabled = false;
-            isPlayerDetected = false;
+            IsPlayerDetected = false;
         }
     }
 
@@ -38,7 +38,7 @@ public class VisionController : MonoBehaviour
     {
         if (collision.gameObject.Equals(Player))
         {
-            isPlayerInRange = true;
+            IsPlayerInRange = true;
         }
     }
 
@@ -46,14 +46,14 @@ public class VisionController : MonoBehaviour
     {
         if (collision.gameObject.Equals(Player))
         {
-            isPlayerInRange = false;
-            isPlayerDetected = false;
+            IsPlayerInRange = false;
+            IsPlayerDetected = false;
         }
     }
 
     bool CanPlayerBeSeen()
     {
-        if (isPlayerInRange && !PlayerHiddenByObstacles()) return true;
+        if (IsPlayerInRange && !PlayerHiddenByObstacles()) return true;
         else return false;
     }
 

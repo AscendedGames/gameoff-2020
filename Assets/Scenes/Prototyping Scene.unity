@@ -121,6 +121,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &215171535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 215171536}
+  - component: {fileID: 215171537}
+  m_Layer: 0
+  m_Name: WallCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &215171536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215171535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 749128585}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &215171537
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215171535}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d01a9f7485c82e046b4dd6aa56ee6e05, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0011606218, y: -0.00000013424882}
+  m_Size: {x: 0.3553503, y: 0.18353994}
+  m_Direction: 1
 --- !u!1 &330450247
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +799,6 @@ GameObject:
   - component: {fileID: 749128584}
   - component: {fileID: 749128586}
   - component: {fileID: 749128588}
-  - component: {fileID: 749128592}
   - component: {fileID: 749128589}
   - component: {fileID: 749128587}
   - component: {fileID: 749128590}
@@ -827,6 +873,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1795089198}
+  - {fileID: 215171536}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1020,22 +1067,6 @@ MonoBehaviour:
   HiddenText: {fileID: 979191999}
   DetectedText: {fileID: 716811934}
   isMouseHidden: 0
---- !u!70 &749128592
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749128583}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: d01a9f7485c82e046b4dd6aa56ee6e05, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0011606218, y: -0.00000013424882}
-  m_Size: {x: 0.3553503, y: 0.18353994}
-  m_Direction: 1
 --- !u!1 &807429009
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,7 +3129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 749128583}
   NPCEyes: {fileID: 1278147971}
-  isPlayerDetected: 0
+  IsPlayerDetected: 0
+  IsPlayerInRange: 0
 --- !u!1 &1795089197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,7 +3385,8 @@ MonoBehaviour:
   VisionDetector: {fileID: 1531043902}
   GameOverText: {fileID: 1376405663}
   BrokenPursuitPauseTime: 2
-  isNPCInPursuit: 0
+  IsInPursuit: 0
+  HasBrokenPursuit: 0
 --- !u!1 &2057456191
 GameObject:
   m_ObjectHideFlags: 0

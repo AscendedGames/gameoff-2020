@@ -14,13 +14,17 @@ public class NPCPursuitController : MonoBehaviour
     [HideInInspector]
     public bool HasBrokenPursuit;
 
-    private bool isPlayerInSight;
+    private VisionController visionController;
+    private bool _isPlayerInSight;
+    private bool _isPlayerInRange;
 
     // Start is called before the first frame update
     void Start()
     {
+        visionController = VisionDetector.GetComponent<VisionController>();
+
         GameOverText.enabled = false;
-        isPlayerInSight = false;
+        _isPlayerInSight = false;
         IsInPursuit = false;
         HasBrokenPursuit = false;
     }
@@ -28,9 +32,10 @@ public class NPCPursuitController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isPlayerInSight = VisionDetector.GetComponent<VisionController>().isPlayerDetected;
+        _isPlayerInSight = visionController.IsPlayerDetected;
+        _isPlayerInRange = visionController.IsPlayerInRange;
 
-        if (isPlayerInSight)
+        if (_isPlayerInSight)
         {
             IsInPursuit = true;
             PursuePlayer();
@@ -46,13 +51,17 @@ public class NPCPursuitController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (!_isPlayerInRange)
+            {
+                transform.localRotation *= Quaternion.Euler(0, 90, 0);
+            }
             GameOverText.enabled = true;
+            Time.timeScale = 0;
         }
     }
 
     void PursuePlayer()
     {
-        //transform.LookAt(Player);
         transform.Translate(2 * Time.deltaTime * PursuitSpeed, 0, 0);
     }
 
