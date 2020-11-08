@@ -57,6 +57,7 @@ public class NPCPatrolController : MonoBehaviour
                 _brokenPursuitPauseTimer = npcPursuitController.BrokenPursuitPauseTime;
 
                 transform.localRotation *= Quaternion.Euler(0, 180, 0);
+                transform.Find("OverheadStatus").localRotation *= Quaternion.Euler(0, 180, 0);
                 transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
             }
         }
@@ -67,7 +68,11 @@ public class NPCPatrolController : MonoBehaviour
         if ((collision.name.Equals(LeftPatrolBoundary.name) || collision.name.Equals(RightPatrolBoundary.name)) && npcBodyCollider.IsTouching(collision) && !_isInPursuit)
         {
             if (hasGonePastCollider) hasGonePastCollider = false;
-            else transform.localRotation *= Quaternion.Euler(0, 180, 0);
+            else
+            {
+                transform.localRotation *= Quaternion.Euler(0, 180, 0);
+                transform.Find("OverheadStatus").localRotation *= Quaternion.Euler(0, 180, 0);
+            }
         }
 
         if ((collision.name.Equals(LeftPatrolBoundary.name) || collision.name.Equals(RightPatrolBoundary.name)) && npcBodyCollider.IsTouching(collision) && _isInPursuit)
