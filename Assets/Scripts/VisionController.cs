@@ -12,9 +12,6 @@ public class VisionController : MonoBehaviour
 
     private bool isPlayerInRange;
 
-    [SerializeField]
-    private Transform lineOfSightEnd;
-
     // Start is called before the first frame update
     void Start()
     {
