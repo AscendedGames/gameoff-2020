@@ -54,38 +54,10 @@ public class VisionController : MonoBehaviour
         }
     }
 
-    bool PlayerInFieldOfView()
-    {
-        Vector2 directionToPlayer = Player.transform.position - NPCEyes.transform.position;
-        Debug.DrawLine(NPCEyes.transform.position, Player.transform.position, Color.white);
-
-        Vector2 lineOfSight = lineOfSightEnd.position - NPCEyes.transform.position;
-        Debug.DrawLine(NPCEyes.transform.position, lineOfSightEnd.position, Color.cyan);
-
-        float angle = Vector2.Angle(directionToPlayer, lineOfSight);
-
-        if (angle < 170)
-        {
-            return true;
-        }
-        else
-            return false;
-    }
-
     bool CanPlayerBeSeen()
     {
-        if (isPlayerInRange)
-        {
-            if (PlayerInFieldOfView())
-                return (!PlayerHiddenByObstacles());
-            else
-                return false;
-
-        }
-        else
-        {
-            return false;
-        }
+        if (isPlayerInRange && !PlayerHiddenByObstacles()) return true;
+        else return false;
     }
 
     bool PlayerHiddenByObstacles()
