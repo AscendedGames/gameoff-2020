@@ -7,6 +7,9 @@ public class VisionController : MonoBehaviour
     public GameObject Player;
     public GameObject NPCEyes;
 
+    [HideInInspector]
+    public bool isPlayerDetected;
+
     private bool isPlayerInRange;
 
     [SerializeField]
@@ -16,6 +19,7 @@ public class VisionController : MonoBehaviour
     void Start()
     {
         isPlayerInRange = false;
+        isPlayerDetected = false;
     }
 
     // Update is called once per frame
@@ -24,8 +28,13 @@ public class VisionController : MonoBehaviour
         if (CanPlayerBeSeen() && !Player.GetComponent<HidingController>().isMouseHidden)
         {
             Player.GetComponent<HidingController>().DetectedText.enabled = true;
+            isPlayerDetected = true;
         }
-        else Player.GetComponent<HidingController>().DetectedText.enabled = false;
+        else
+        {
+            Player.GetComponent<HidingController>().DetectedText.enabled = false;
+            isPlayerDetected = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,6 +50,7 @@ public class VisionController : MonoBehaviour
         if (collision.gameObject.Equals(Player))
         {
             isPlayerInRange = false;
+            isPlayerDetected = false;
         }
     }
 

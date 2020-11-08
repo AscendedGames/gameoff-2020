@@ -4,6 +4,8 @@ public class NPCPatrolController : MonoBehaviour
 {
     public float MovementSpeed;
     public SpriteRenderer spriteRenderer;
+    public Collider2D LeftPatrolBoundary;
+    public Collider2D RightPatrolBoundary;
 
     private BoxCollider2D npcBodyCollider;
 
@@ -19,7 +21,7 @@ public class NPCPatrolController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Contains("Prototype Scientist Boundary") && npcBodyCollider.IsTouching(collision))
+        if ((collision.name.Equals(LeftPatrolBoundary.name) || collision.name.Equals(RightPatrolBoundary.name)) && npcBodyCollider.IsTouching(collision) && !GetComponent<NPCPursuitController>().isNPCInPursuit)
         {
             transform.localRotation *= Quaternion.Euler(0, 180, 0);
         }
