@@ -12,6 +12,7 @@ public class NPCPursuitController : MonoBehaviour
     public bool isNPCInPursuit;
 
     private bool isPlayerInSight;
+    private Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,8 @@ public class NPCPursuitController : MonoBehaviour
         GameOverText.enabled = false;
         isPlayerInSight = false;
         isNPCInPursuit = false;
+
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class NPCPursuitController : MonoBehaviour
 
         if (isPlayerInSight)
         {
+            isNPCInPursuit = true;
             PursuePlayer();
         }
     }
@@ -42,7 +46,7 @@ public class NPCPursuitController : MonoBehaviour
 
     void PursuePlayer()
     {
-        transform.LookAt(Player);
-        transform.position += transform.forward * PursuitSpeed * Time.deltaTime;
+        //transform.LookAt(Player);
+        transform.Translate(2 * Time.deltaTime * PursuitSpeed, 0, 0);
     }
 }
