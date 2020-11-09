@@ -3729,6 +3729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbb026144b93ae4bb350301b119c6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 749128585}
   MovementSpeed: 0.5
   spriteRenderer: {fileID: 1940527336}
   LeftPatrolBoundary: {fileID: 2057456193}

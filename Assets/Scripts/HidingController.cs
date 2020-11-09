@@ -26,6 +26,7 @@ public class HidingController : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("HidingArea"))
         {
+            transform.gameObject.layer = LayerMask.NameToLayer("Hidden");
             isMouseHidden = true;
             HiddenText.color = Color.green;
         }
@@ -36,6 +37,7 @@ public class HidingController : MonoBehaviour
 
         if (collision.gameObject.name.Equals("HidingArea"))
         {
+            transform.gameObject.layer = LayerMask.NameToLayer("Default");
             isMouseHidden = false;
             HiddenText.color = Color.red;
         }

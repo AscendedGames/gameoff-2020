@@ -17,7 +17,6 @@ public class NPCPursuitController : MonoBehaviour
     private VisionController _visionController;
     private bool _isPlayerInSight;
     private bool _isPlayerInRange;
-    private GameObject _overheadStatus;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +27,8 @@ public class NPCPursuitController : MonoBehaviour
         _isPlayerInSight = false;
         IsInPursuit = false;
         HasBrokenPursuit = false;
+
+        Physics2D.IgnoreLayerCollision(0, 9);
     }
 
     // Update is called once per frame
@@ -60,6 +61,21 @@ public class NPCPursuitController : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    {
+    //        if (collision.gameObject.CompareTag("CaughtChecker"))
+    //        {
+    //            if (!_isPlayerInRange)
+    //            {
+    //                transform.localRotation *= Quaternion.Euler(0, 90, 0);
+    //            }
+    //            GameOverText.enabled = true;
+    //            Time.timeScale = 0;
+    //        }
+    //    }
+    //}
 
     void PursuePlayer()
     {

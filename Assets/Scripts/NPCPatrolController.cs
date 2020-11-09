@@ -2,6 +2,7 @@
 
 public class NPCPatrolController : MonoBehaviour
 {
+    public Transform Player;
     public float MovementSpeed;
     public SpriteRenderer spriteRenderer;
     public Collider2D LeftPatrolBoundary;
@@ -30,6 +31,8 @@ public class NPCPatrolController : MonoBehaviour
         _status = _overheadStatus.GetComponent<SpriteRenderer>();
         hasGonePastCollider = false;
         _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
+
+        Physics2D.IgnoreLayerCollision(0, 9);
     }
 
     void Update()
