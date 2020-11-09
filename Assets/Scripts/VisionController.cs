@@ -7,16 +7,25 @@ public class VisionController : MonoBehaviour
     public GameObject Player;
     public GameObject NPCEyes;
 
+    [Header("Overhead Status")]
+    public GameObject OverheadStatus;
+    public Sprite AlertedSprite;
+    public Sprite SearchingSprite;
+
     [HideInInspector]
     public bool IsPlayerDetected;
     [HideInInspector]
     public bool IsPlayerInRange;
 
+    private SpriteRenderer overheadStatus;
+
     // Start is called before the first frame update
     void Start()
     {
+        overheadStatus = OverheadStatus.GetComponent<SpriteRenderer>();
         IsPlayerInRange = false;
         IsPlayerDetected = false;
+        overheadStatus.sprite = null;
     }
 
     // Update is called once per frame
@@ -26,11 +35,13 @@ public class VisionController : MonoBehaviour
         {
             Player.GetComponent<HidingController>().DetectedText.enabled = true;
             IsPlayerDetected = true;
+            overheadStatus.sprite = AlertedSprite;
         }
         else
         {
             Player.GetComponent<HidingController>().DetectedText.enabled = false;
             IsPlayerDetected = false;
+            overheadStatus.sprite = null;
         }
     }
 
