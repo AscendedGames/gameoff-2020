@@ -14,29 +14,29 @@ public class NPCPatrolController : MonoBehaviour
     private bool _isInPursuit;
     private bool _hasBrokenPursuit;
 
-    private NPCPursuitController npcPursuitController;
-    private GameObject OverheadStatus;
-    private GameObject VisionDetector;
-    private SpriteRenderer overheadStatus;
+    private NPCPursuitController _npcPursuitController;
+    private GameObject _overheadStatus;
+    private GameObject _visionDetector;
+    private SpriteRenderer _status;
     private VisionController visionController;
 
     private void Start()
     {
-        OverheadStatus = transform.Find("OverheadStatus").gameObject;
-        VisionDetector = transform.Find("VisionDetector").gameObject;
-        visionController = VisionDetector.GetComponent<VisionController>();
+        _overheadStatus = transform.Find("OverheadStatus").gameObject;
+        _visionDetector = transform.Find("VisionDetector").gameObject;
+        visionController = _visionDetector.GetComponent<VisionController>();
         npcBodyCollider = GetComponent<BoxCollider2D>();
-        npcPursuitController = GetComponent<NPCPursuitController>();
-        overheadStatus = OverheadStatus.GetComponent<SpriteRenderer>();
+        _npcPursuitController = GetComponent<NPCPursuitController>();
+        _status = _overheadStatus.GetComponent<SpriteRenderer>();
         hasGonePastCollider = false;
-        _brokenPursuitPauseTimer = npcPursuitController.BrokenPursuitPauseTime;
+        _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
     }
 
     void Update()
     {
-        npcPursuitController = GetComponent<NPCPursuitController>();
-        _isInPursuit = npcPursuitController.IsInPursuit;
-        _hasBrokenPursuit = npcPursuitController.HasBrokenPursuit;
+        _npcPursuitController = GetComponent<NPCPursuitController>();
+        _isInPursuit = _npcPursuitController.IsInPursuit;
+        _hasBrokenPursuit = _npcPursuitController.HasBrokenPursuit;
 
         if (!_hasBrokenPursuit)
         {
@@ -51,18 +51,18 @@ public class NPCPatrolController : MonoBehaviour
                 if (!visionController.IsPlayerDetected)
                 {
                     transform.Translate(0, 0, 0);
-                    overheadStatus.sprite = visionController.SearchingSprite;
+                    _status.sprite = visionController.SearchingSprite;
                 }
                 else 
                 {
-                    npcPursuitController.HasBrokenPursuit = false;
-                    _brokenPursuitPauseTimer = npcPursuitController.BrokenPursuitPauseTime;
+                    _npcPursuitController.HasBrokenPursuit = false;
+                    _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
                 }
             }
             else if (_brokenPursuitPauseTimer < 0)
             {
-                npcPursuitController.HasBrokenPursuit = false;
-                _brokenPursuitPauseTimer = npcPursuitController.BrokenPursuitPauseTime;
+                _npcPursuitController.HasBrokenPursuit = false;
+                _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
 
                 transform.localRotation *= Quaternion.Euler(0, 180, 0);
                 transform.Find("OverheadStatus").localRotation *= Quaternion.Euler(0, 180, 0);
