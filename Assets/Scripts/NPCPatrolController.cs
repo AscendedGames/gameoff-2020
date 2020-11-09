@@ -48,10 +48,18 @@ public class NPCPatrolController : MonoBehaviour
 
             if (_brokenPursuitPauseTimer > 0)
             {
-                transform.Translate(0, 0, 0);
-                overheadStatus.sprite = visionController.SearchingSprite;
+                if (!visionController.IsPlayerDetected)
+                {
+                    transform.Translate(0, 0, 0);
+                    overheadStatus.sprite = visionController.SearchingSprite;
+                }
+                else 
+                {
+                    npcPursuitController.HasBrokenPursuit = false;
+                    _brokenPursuitPauseTimer = npcPursuitController.BrokenPursuitPauseTime;
+                }
             }
-            else
+            else if (_brokenPursuitPauseTimer < 0)
             {
                 npcPursuitController.HasBrokenPursuit = false;
                 _brokenPursuitPauseTimer = npcPursuitController.BrokenPursuitPauseTime;
