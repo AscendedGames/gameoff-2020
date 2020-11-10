@@ -7,6 +7,8 @@ public class NPCPatrolController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Collider2D LeftPatrolBoundary;
     public Collider2D RightPatrolBoundary;
+    public float DirChangeTimerMin;
+    public float DirChangeTimerMax;
 
     private BoxCollider2D npcBodyCollider;
     private bool hasGonePastCollider;
