@@ -17,7 +17,6 @@ public class NPCPursuitController : MonoBehaviour
     private VisionController _visionController;
     private bool _isPlayerInSight;
     private bool _isPlayerInRange;
-    private GameObject _overheadStatus;
 
     // Start is called before the first frame update
     void Start()
@@ -50,11 +49,11 @@ public class NPCPursuitController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.name == "Mouse")
         {
             if (!_isPlayerInRange)
             {
-                transform.localRotation *= Quaternion.Euler(0, 90, 0);
+                transform.localRotation *= Quaternion.Euler(0, 180, 0);
             }
             GameOverText.enabled = true;
             Time.timeScale = 0;

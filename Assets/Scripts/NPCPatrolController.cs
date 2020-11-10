@@ -2,6 +2,7 @@
 
 public class NPCPatrolController : MonoBehaviour
 {
+    public Transform Player;
     public float MovementSpeed;
     public SpriteRenderer spriteRenderer;
     public Collider2D LeftPatrolBoundary;
@@ -20,7 +21,7 @@ public class NPCPatrolController : MonoBehaviour
     private SpriteRenderer _status;
     private VisionController visionController;
 
-    private void Start()
+    void Start()
     {
         _overheadStatus = transform.Find("OverheadStatus").gameObject;
         _visionDetector = transform.Find("VisionDetector").gameObject;
