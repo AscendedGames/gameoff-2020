@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Trigger
   - CaughtChecker
+  - Misc Collider
   layers:
   - Default
   - TransparentFX
