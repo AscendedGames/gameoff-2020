@@ -27,8 +27,6 @@ public class NPCPursuitController : MonoBehaviour
         _isPlayerInSight = false;
         IsInPursuit = false;
         HasBrokenPursuit = false;
-
-        Physics2D.IgnoreLayerCollision(0, 9);
     }
 
     // Update is called once per frame
@@ -51,31 +49,16 @@ public class NPCPursuitController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.name == "Mouse")
         {
             if (!_isPlayerInRange)
             {
-                transform.localRotation *= Quaternion.Euler(0, 90, 0);
+                transform.localRotation *= Quaternion.Euler(0, 180, 0);
             }
             GameOverText.enabled = true;
             Time.timeScale = 0;
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    {
-    //        if (collision.gameObject.CompareTag("CaughtChecker"))
-    //        {
-    //            if (!_isPlayerInRange)
-    //            {
-    //                transform.localRotation *= Quaternion.Euler(0, 90, 0);
-    //            }
-    //            GameOverText.enabled = true;
-    //            Time.timeScale = 0;
-    //        }
-    //    }
-    //}
 
     void PursuePlayer()
     {

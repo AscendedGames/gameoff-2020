@@ -21,7 +21,7 @@ public class NPCPatrolController : MonoBehaviour
     private SpriteRenderer _status;
     private VisionController visionController;
 
-    private void Start()
+    void Start()
     {
         _overheadStatus = transform.Find("OverheadStatus").gameObject;
         _visionDetector = transform.Find("VisionDetector").gameObject;
@@ -31,8 +31,6 @@ public class NPCPatrolController : MonoBehaviour
         _status = _overheadStatus.GetComponent<SpriteRenderer>();
         hasGonePastCollider = false;
         _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
-
-        Physics2D.IgnoreLayerCollision(0, 9);
     }
 
     void Update()
