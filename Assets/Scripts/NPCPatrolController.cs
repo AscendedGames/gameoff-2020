@@ -11,7 +11,7 @@ public class NPCPatrolController : MonoBehaviour
     public float DirChangeTimerMax;
 
     private BoxCollider2D npcBodyCollider;
-    private bool hasGonePastCollider;
+    private bool hasGonePastCheckpoint;
 
     private float _brokenPursuitPauseTimer;
     private bool _isInPursuit;
@@ -31,7 +31,7 @@ public class NPCPatrolController : MonoBehaviour
         npcBodyCollider = GetComponent<BoxCollider2D>();
         _npcPursuitController = GetComponent<NPCPursuitController>();
         _status = _overheadStatus.GetComponent<SpriteRenderer>();
-        hasGonePastCollider = false;
+        hasGonePastCheckpoint = false;
         _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
     }
 
@@ -78,7 +78,7 @@ public class NPCPatrolController : MonoBehaviour
     {
         if ((collision.name.Equals(LeftPatrolBoundary.name) || collision.name.Equals(RightPatrolBoundary.name)) && npcBodyCollider.IsTouching(collision) && !_isInPursuit)
         {
-            if (hasGonePastCollider) hasGonePastCollider = false;
+            if (hasGonePastCheckpoint) hasGonePastCheckpoint = false;
             else
             {
                 transform.localRotation *= Quaternion.Euler(0, 180, 0);
@@ -88,8 +88,8 @@ public class NPCPatrolController : MonoBehaviour
 
         if ((collision.name.Equals(LeftPatrolBoundary.name) || collision.name.Equals(RightPatrolBoundary.name)) && npcBodyCollider.IsTouching(collision) && _isInPursuit)
         {
-            hasGonePastCollider = true;
-            Debug.Log(hasGonePastCollider);
+            hasGonePastCheckpoint = true;
+            Debug.Log(hasGonePastCheckpoint);
         }
     }
 }
