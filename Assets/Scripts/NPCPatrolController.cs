@@ -8,12 +8,22 @@ public class NPCPatrolController : MonoBehaviour
     public Collider2D LeftPatrolBoundary;
     public Collider2D RightPatrolBoundary;
 
+    [Header("Randomized Patrolling")]
+    public bool EnableRandomPatrol;
+    public float DirChangeTimeMin;
+    public float DirChangeTimeMax;
+    public float DirChangePauseTimeMin;
+    public float DirChangePauseTimeMax;
+
     private BoxCollider2D npcBodyCollider;
-    private bool hasGonePastCollider;
+    private bool hasGonePastCheckpoint;
+    private float randomDirChangeTimer;
+    private bool randomDirChangeTimerNeedsSet;
 
     private float _brokenPursuitPauseTimer;
     private bool _isInPursuit;
     private bool _hasBrokenPursuit;
+    private float dirChangePauseTimer;
 
     private NPCPursuitController _npcPursuitController;
     private GameObject _overheadStatus;
@@ -29,8 +39,10 @@ public class NPCPatrolController : MonoBehaviour
         npcBodyCollider = GetComponent<BoxCollider2D>();
         _npcPursuitController = GetComponent<NPCPursuitController>();
         _status = _overheadStatus.GetComponent<SpriteRenderer>();
-        hasGonePastCollider = false;
+        hasGonePastCheckpoint = false;
         _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
+        randomDirChangeTimerNeedsSet = true;
+        dirChangePauseTimer = SetDirChangePauseTimer();
     }
 
     void Update()
@@ -41,7 +53,27 @@ public class NPCPatrolController : MonoBehaviour
 
         if (!_hasBrokenPursuit)
         {
-            transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
+            if (EnableRandomPatrol)
+            {
+                randomDirChangeTimer -= Time.deltaTime;
+
+                if (DoRandomDirectionChange() && !hasGonePastCheckpoint)
+                {
+                    if (dirChangePauseTimer > 0)
+                    {
+                        PauseMovement();
+                        dirChangePauseTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        randomDirChangeTimerNeedsSet = true;
+                        dirChangePauseTimer = SetDirChangePauseTimer();
+                        RotateNPCAndChildren();
+                    }
+                }
+                else MoveNormally();
+            }
+            else MoveNormally();
         }
         else if (_hasBrokenPursuit)
         {
@@ -51,7 +83,7 @@ public class NPCPatrolController : MonoBehaviour
             {
                 if (!visionController.IsPlayerDetected)
                 {
-                    transform.Translate(0, 0, 0);
+                    PauseMovement();
                     _status.sprite = visionController.SearchingSprite;
                 }
                 else 
@@ -65,9 +97,8 @@ public class NPCPatrolController : MonoBehaviour
                 _npcPursuitController.HasBrokenPursuit = false;
                 _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
 
-                transform.localRotation *= Quaternion.Euler(0, 180, 0);
-                transform.Find("OverheadStatus").localRotation *= Quaternion.Euler(0, 180, 0);
-                transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
+                RotateNPCAndChildren();
+                MoveNormally();
             }
         }
     }
@@ -76,18 +107,48 @@ public class NPCPatrolController : MonoBehaviour
     {
         if ((collision.name.Equals(LeftPatrolBoundary.name) || collision.name.Equals(RightPatrolBoundary.name)) && npcBodyCollider.IsTouching(collision) && !_isInPursuit)
         {
-            if (hasGonePastCollider) hasGonePastCollider = false;
-            else
-            {
-                transform.localRotation *= Quaternion.Euler(0, 180, 0);
-                transform.Find("OverheadStatus").localRotation *= Quaternion.Euler(0, 180, 0);
-            }
+            if (hasGonePastCheckpoint) hasGonePastCheckpoint = false;
+            else RotateNPCAndChildren();
         }
 
         if ((collision.name.Equals(LeftPatrolBoundary.name) || collision.name.Equals(RightPatrolBoundary.name)) && npcBodyCollider.IsTouching(collision) && _isInPursuit)
         {
-            hasGonePastCollider = true;
-            Debug.Log(hasGonePastCollider);
+            hasGonePastCheckpoint = true;
         }
+    }
+
+    private void MoveNormally()
+    {
+        transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
+    }
+    
+    private bool DoRandomDirectionChange()
+    {
+        if (randomDirChangeTimerNeedsSet) ResetDirChangeTimer();
+
+        if (randomDirChangeTimer > 0) return false;
+        else return true;
+    }
+
+    private void RotateNPCAndChildren()
+    {
+        transform.localRotation *= Quaternion.Euler(0, 180, 0);
+        transform.Find("OverheadStatus").localRotation *= Quaternion.Euler(0, 180, 0);
+    }
+
+    private void PauseMovement()
+    {
+        transform.Translate(0, 0, 0);
+    }
+
+    private float SetDirChangePauseTimer()
+    {
+        return Random.Range(DirChangePauseTimeMin, DirChangePauseTimeMax);
+    }
+
+    private void ResetDirChangeTimer()
+    {
+        randomDirChangeTimer = Random.Range(DirChangeTimeMin, DirChangeTimeMax);
+        randomDirChangeTimerNeedsSet = false;
     }
 }
