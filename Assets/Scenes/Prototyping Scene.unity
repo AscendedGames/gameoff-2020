@@ -3734,6 +3734,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1940527336}
   LeftPatrolBoundary: {fileID: 2057456193}
   RightPatrolBoundary: {fileID: 1904372169}
+  DirChangeTimeMin: 5
+  DirChangeTimeMax: 15
+  DirChangePauseTimeMin: 1
+  DirChangePauseTimeMax: 4
 --- !u!114 &1940527341
 MonoBehaviour:
   m_ObjectHideFlags: 0
