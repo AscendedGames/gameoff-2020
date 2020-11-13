@@ -51,7 +51,7 @@ public class NPCPatrolController : MonoBehaviour
         _isInPursuit = _npcPursuitController.IsInPursuit;
         _hasBrokenPursuit = _npcPursuitController.HasBrokenPursuit;
 
-        if (!_hasBrokenPursuit)
+        if (!_hasBrokenPursuit && !visionController.IsPlayerDetected)
         {
             if (EnableRandomPatrol)
             {
@@ -124,10 +124,14 @@ public class NPCPatrolController : MonoBehaviour
     
     private bool DoRandomDirectionChange()
     {
-        if (randomDirChangeTimerNeedsSet) ResetDirChangeTimer();
+        if (!visionController.IsPlayerDetected)
+        {
+            if (randomDirChangeTimerNeedsSet) ResetDirChangeTimer();
 
-        if (randomDirChangeTimer > 0) return false;
-        else return true;
+            if (randomDirChangeTimer > 0) return false;
+            else return true;
+        }
+        else return false;
     }
 
     private void RotateNPCAndChildren()
