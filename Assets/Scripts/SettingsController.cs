@@ -19,7 +19,7 @@ public class SettingsController : MonoBehaviour
 
     void Start ()
     {
-        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("VolumePreference", 25f);
 
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -45,11 +45,11 @@ public class SettingsController : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-    public void SetVolume (float sliderValue)
-    {
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10 (sliderValue) * 20);
-        currentVolume = sliderValue;
-    }
+    //public void SetVolume (float sliderValue)
+    //{
+    //    audioMixer.SetFloat("MasterVolume", Mathf.Log10 (sliderValue) * 20);
+    //    currentVolume = sliderValue;
+    //}
 
     public void SetQuality(int qualityIndex)
     {
