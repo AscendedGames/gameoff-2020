@@ -3355,7 +3355,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: -7565867363760584626, guid: 5479028c3bcfbcc43a9a713fb2e99f36,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3422,6 +3422,7 @@ MonoBehaviour:
   JumpForce: 4
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
+  PlayerCanMove: 0
   isGroundedChecker: {fileID: 1795089198}
   checkGroundRadius: 0.05
   groundLayer:
