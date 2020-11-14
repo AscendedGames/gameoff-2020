@@ -1,32 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitchControl : MonoBehaviour
 {
-    public void BtnNewGame() //Load the Game
-    {
-        SceneManager.LoadScene("Prototyping Scene");
-    }
+    private GameObject MainMenuPanel;
+    private GameObject OptionsPanel;
+    private GameObject CreditsPanel;
 
     public void BtnMainMenu() //Load the Main Menu
     {
-        SceneManager.LoadScene("MainMenu");
+        OptionsPanel = GameObject.Find("OptionsPanel");
+        MainMenuPanel = GameObject.Find("MainMenuPanel");
+        CreditsPanel = GameObject.Find("CreditsPanel");
+
+        OptionsPanel.GetComponent<Animator>().Play("Slide-Right-Out");
+        CreditsPanel.GetComponent<Animator>().Play("Slide-Right-Out");
+        MainMenuPanel.GetComponent<Animator>().Play("Slide-Right-In");
+    }
+
+    public void BtnNewGame() //Load the Game
+    {
+        SceneManager.LoadScene("Prototyping Scene");
+        Time.timeScale = 1f;
     }
 
     public void BtnOptions() //Access the Options Menu
     {
-        SceneManager.LoadScene("OptionsMenu");
+        OptionsPanel = GameObject.Find("OptionsPanel");
+        MainMenuPanel = GameObject.Find("MainMenuPanel");
+
+        OptionsPanel.GetComponent<Animator>().Play("Slide-Left-In");
+        MainMenuPanel.GetComponent<Animator>().Play("Slide-Left-Out");
     }
 
     public void BtnCredits() //Access the Credits Menu
     {
-        SceneManager.LoadScene("CreditsMenu");
+        CreditsPanel = GameObject.Find("CreditsPanel");
+        MainMenuPanel = GameObject.Find("MainMenuPanel");
+
+        CreditsPanel.GetComponent<Animator>().Play("Slide-Left-In");
+        MainMenuPanel.GetComponent<Animator>().Play("Slide-Left-Out");
     }
 
     public void BtnQuitGame() //Exit Application
     {
         Application.Quit();
     }
+
 }
