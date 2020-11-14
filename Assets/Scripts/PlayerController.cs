@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public float fallMultiplier = 2.5f; // Gravity multiplier to help our jumping feel more polished.
     public float lowJumpMultiplier = 2f; // Allows the player to make smaller jumps by holding the Jump key for less time.
 
+    [HideInInspector]
+    public bool PlayerCanMove;
+
     bool isGrounded = false; // This boolean lets us determine if the player's feet are on the ground or not.
     public Transform isGroundedChecker; // This variable holds the empty GameObject that acts as our ground checker.
     public float checkGroundRadius; // Floating point variable to store the radius of the ground checker.
@@ -25,6 +28,8 @@ public class PlayerController : MonoBehaviour
     {
         // Get and store a reference to the Rigidbody2D component so that we can access it.
         rigidBody = GetComponent<Rigidbody2D>();
+
+        PlayerCanMove = true;
     }
 
     /// <summary>
@@ -47,12 +52,15 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        // Assign the Horizontal movement key to a variable
-        var moveHorizontal = Input.GetAxis("Horizontal");
+        if (PlayerCanMove)
+        {
+            // Assign the Horizontal movement key to a variable
+            var moveHorizontal = Input.GetAxis("Horizontal");
 
-        // Calculate and apply movement speed.
-        float movement = moveHorizontal * MovementSpeed;
-        rigidBody.velocity = new Vector2(movement, rigidBody.velocity.y);
+            // Calculate and apply movement speed.
+            float movement = moveHorizontal * MovementSpeed;
+            rigidBody.velocity = new Vector2(movement, rigidBody.velocity.y);
+        }
     }
 
     /// <summary>
@@ -60,7 +68,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
+        if (Input.GetButtonDown("Jump") && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor) && PlayerCanMove)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpForce);
         }
