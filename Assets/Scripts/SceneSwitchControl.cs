@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Animations;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitchControl : MonoBehaviour
@@ -49,5 +46,4 @@ public class SceneSwitchControl : MonoBehaviour
     {
         Application.Quit();
     }
-
 }

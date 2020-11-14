@@ -3884,11 +3884,11 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.75
+  m_Value: 0.25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 443251477}
+      - m_Target: {fileID: 1265779362}
         m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
@@ -4346,7 +4346,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1505579613}
   m_HandleRect: {fileID: 1505579612}
   m_Direction: 2
-  m_Value: 0.99999887
+  m_Value: 0.99999875
   m_Size: 0.4979449
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5708,6 +5708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1265779361}
   - component: {fileID: 1265779360}
+  - component: {fileID: 1265779362}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -5727,10 +5728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d591e6e51b0d549bb0b85c7fc210c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 787493300}
-  pauseOptions: {fileID: 787493300}
-  quitConfirmMenu: {fileID: 787493300}
-  resetConfirmMenu: {fileID: 787493300}
 --- !u!4 &1265779361
 Transform:
   m_ObjectHideFlags: 0
@@ -5745,6 +5742,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1265779362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265779359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3317381124a4caa45b0c212cceebe507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 20b911034a7c46041aa6f9479047a746, type: 2}
+  masterVolumeSlider: {fileID: 1059152755}
+  InitialMasterVolume: 0.25
 --- !u!1 &1270848342
 GameObject:
   m_ObjectHideFlags: 0
