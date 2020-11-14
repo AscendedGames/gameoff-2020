@@ -134,7 +134,7 @@ public class NPCPatrolController : MonoBehaviour
         else return false;
     }
 
-    private void RotateNPCAndChildren()
+    public void RotateNPCAndChildren()
     {
         transform.localRotation *= Quaternion.Euler(0, 180, 0);
         transform.Find("OverheadStatus").localRotation *= Quaternion.Euler(0, 180, 0);
