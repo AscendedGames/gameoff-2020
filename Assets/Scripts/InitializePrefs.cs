@@ -11,11 +11,22 @@ public class InitializePrefs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        masterVolumeSlider.value = PlayerPrefs.GetFloat("VolumePreference", 0.25f);
+        InitializeVolume();
+    }
+
+    private void InitializeVolume()
+    {
+        if (!PlayerPrefs.HasKey("VolumePreference"))
+        {
+            audioMixer.SetFloat("MasterVolume", Mathf.Log10(0.25f) * 20);
+            PlayerPrefs.SetFloat("VolumePreference", 0.25f);
+        }
+        else masterVolumeSlider.value = PlayerPrefs.GetFloat("VolumePreference");
     }
 
     public void SetVolume(float sliderValue)
     {
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
+        PlayerPrefs.SetFloat("VolumePreference", sliderValue);
     }
 }
