@@ -8,10 +8,6 @@ using TMPro;
 
 public class SettingsController : MonoBehaviour
 {
-    public AudioMixer audioMixer;
-    public Slider masterVolumeSlider;
-    float currentVolume;
-
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown resolutionDropdown;
 
@@ -19,8 +15,6 @@ public class SettingsController : MonoBehaviour
 
     void Start ()
     {
-        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
-
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
@@ -45,11 +39,6 @@ public class SettingsController : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-    public void SetVolume (float sliderValue)
-    {
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10 (sliderValue) * 20);
-        currentVolume = sliderValue;
-    }
 
     public void SetQuality(int qualityIndex)
     {
@@ -73,8 +62,6 @@ public class SettingsController : MonoBehaviour
                    resolutionDropdown.value);
         PlayerPrefs.SetInt("FullscreenPreference",
                    Convert.ToInt32(Screen.fullScreen));
-        PlayerPrefs.SetFloat("VolumePreference",
-                   currentVolume);
     }
 
     public void LoadSettings(int currentResolutionIndex)
@@ -94,11 +81,5 @@ public class SettingsController : MonoBehaviour
             Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference"));
         else
             Screen.fullScreen = true;
-        if (PlayerPrefs.HasKey("VolumePreference"))
-            masterVolumeSlider.value =
-                        PlayerPrefs.GetFloat("VolumePreference");
-        else
-            masterVolumeSlider.value =
-                        PlayerPrefs.GetFloat("VolumePreference");
     }
 }
