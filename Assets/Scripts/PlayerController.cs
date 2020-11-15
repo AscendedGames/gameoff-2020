@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     float lastTimeGrounded; // Floating point variable to remember the last time the player was grounded
 
     private Rigidbody2D rigidBody; // Initialize the Rigidbody2D variable to be used later.
+    private Animator animator;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before any of the Update methods are called the first time.
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get and store a reference to the Rigidbody2D component so that we can access it.
         rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         PlayerCanMove = true;
     }
@@ -60,6 +62,8 @@ public class PlayerController : MonoBehaviour
             // Calculate and apply movement speed.
             float movement = moveHorizontal * MovementSpeed;
             rigidBody.velocity = new Vector2(movement, rigidBody.velocity.y);
+            if (Input.GetAxis("Horizontal") != 0) animator.SetBool("isPlayerRunning", true);
+            else animator.SetBool("isPlayerRunning", false);
         }
     }
 
