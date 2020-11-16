@@ -56,11 +56,11 @@ TagManager:
   - name: Middleground Sprites
     uniqueID: 2181131131
     locked: 0
-  - name: Player Character
-    uniqueID: 2863311839
-    locked: 0
   - name: Foreground Sprites
     uniqueID: 3057589107
+    locked: 0
+  - name: Player Character
+    uniqueID: 2863311839
     locked: 0
   - name: NPC Character
     uniqueID: 1146604119
