@@ -6543,9 +6543,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+<<<<<<< HEAD
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
+=======
   m_SortingLayerID: -1431655457
   m_SortingLayer: 4
-  m_SortingOrder: 3
+  m_SortingOrder: 0
+>>>>>>> to-be-merged
   m_Sprite: {fileID: -7565867363760584626, guid: 5479028c3bcfbcc43a9a713fb2e99f36,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6766,14 +6772,32 @@ MonoBehaviour:
   HiddenText: {fileID: 979191999}
   DetectedText: {fileID: 716811934}
   isMouseHidden: 0
+<<<<<<< HEAD
 --- !u!95 &749128592
+Animator:
+  serializedVersion: 3
+=======
+--- !u!114 &749128592
 MonoBehaviour:
+>>>>>>> to-be-merged
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749128583}
   m_Enabled: 1
+<<<<<<< HEAD
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ba8167946781324d94c48eabd0ce8a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+=======
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
   m_Name: 
@@ -6811,24 +6835,7 @@ MonoBehaviour:
   m_ShapePathHash: 2066486519
   m_Mesh: {fileID: 1629968467}
   m_InstanceId: 17342
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749128583}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3ba8167946781324d94c48eabd0ce8a5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+>>>>>>> to-be-merged
 --- !u!1 &765883042
 GameObject:
   m_ObjectHideFlags: 0
@@ -31899,10 +31906,17 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+<<<<<<< HEAD
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: a8a6dae287dad4c46bf9ede5f91f3d65, type: 3}
+=======
   m_SortingLayerID: 1146604119
   m_SortingLayer: 6
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: a8a6dae287dad4c46bf9ede5f91f3d65, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5674d0bac04d7c94c91f1b385edee7cb, type: 3}
+>>>>>>> to-be-merged
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -31921,7 +31935,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940527335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 1.599, y: -2.397, z: 0}
+=======
+  m_LocalPosition: {x: 2.894, y: -2.397, z: 0}
+>>>>>>> to-be-merged
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1531043903}

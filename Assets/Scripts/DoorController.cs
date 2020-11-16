@@ -9,6 +9,8 @@ public class DoorController : MonoBehaviour
     private bool isDoorClosing = false;
     private float holdOpenForSeconds;
     private Animator doorAnimation;
+    public AudioSource doorOpen;
+    public AudioSource doorClosed;
 
     void Start()
     {
@@ -39,6 +41,7 @@ public class DoorController : MonoBehaviour
             {
                 holdOpenForSeconds = HoldOpenForSeconds;
                 doorAnimation.Play("DoorOpenAnimation");
+                doorOpen.Play();
                 isDoorOpen = true;
             }
         }
@@ -60,6 +63,7 @@ public class DoorController : MonoBehaviour
     {
         isDoorOpen = false;
         doorAnimation.Play("DoorCloseAnimation");
+        doorClosed.Play();
         holdOpenForSeconds = HoldOpenForSeconds;
     }
 }
