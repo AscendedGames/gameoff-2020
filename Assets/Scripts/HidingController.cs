@@ -69,7 +69,8 @@ public class HidingController : MonoBehaviour
 
     private void HidePlayer()
     {
-        _spriteRenderer.sortingOrder = 1;
+        _spriteRenderer.sortingOrder = 0;
+        _spriteRenderer.sortingLayerName = "Foreground Sprites";
         transform.gameObject.layer = LayerMask.NameToLayer("Hidden");
         transform.Find("WallCollider").gameObject.layer = LayerMask.NameToLayer("Hidden");
         MovePlayerToHidingSpot();
@@ -80,6 +81,7 @@ public class HidingController : MonoBehaviour
     private void UnhidePlayer()
     {
         _spriteRenderer.sortingOrder = 3;
+        _spriteRenderer.sortingLayerName = "Player Character";
         transform.gameObject.layer = LayerMask.NameToLayer("Default");
         transform.Find("WallCollider").gameObject.layer = LayerMask.NameToLayer("Default");
         isMouseHidden = false;
