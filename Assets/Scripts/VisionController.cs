@@ -31,7 +31,7 @@ public class VisionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CanPlayerBeSeen() && !Player.GetComponent<HidingController>().isMouseHidden)
+        if (CanPlayerBeSeen() && !Player.GetComponent<HidingController>().isPlayerHidden)
         {
             Player.GetComponent<HidingController>().DetectedText.enabled = true;
             IsPlayerDetected = true;

@@ -8,7 +8,7 @@ public class HidingController : MonoBehaviour
     public GameObject Player;
 
     [HideInInspector]
-    public bool isMouseHidden;
+    public bool isPlayerHidden;
 
     private bool isInHiddenArea;
     private Vector3 hidingSpotCoords;
@@ -23,7 +23,7 @@ public class HidingController : MonoBehaviour
         _spriteRenderer = transform.GetComponent<SpriteRenderer>();
         _rigidBody2D = transform.GetComponent<Rigidbody2D>();
 
-        isMouseHidden = false;
+        isPlayerHidden = false;
         isInHiddenArea = false;
         hidingSpotCoords = new Vector3(0, 0, 0);
         DetectedText.enabled = false;
@@ -65,7 +65,7 @@ public class HidingController : MonoBehaviour
             DisablePlayerMovement();
         }
 
-        if (Input.GetAxis("Vertical") > 0 && isMouseHidden)
+        if (Input.GetAxis("Vertical") > 0 && isPlayerHidden)
         {
             UnhidePlayer();
             Player.GetComponent<Animator>().Play("Mouse-Idle-4Legs");
@@ -80,7 +80,7 @@ public class HidingController : MonoBehaviour
         transform.gameObject.layer = LayerMask.NameToLayer("Hidden");
         transform.Find("WallCollider").gameObject.layer = LayerMask.NameToLayer("Hidden");
         MovePlayerToHidingSpot();
-        isMouseHidden = true;
+        isPlayerHidden = true;
         HiddenText.color = Color.green;
     }
 
@@ -90,7 +90,7 @@ public class HidingController : MonoBehaviour
         _spriteRenderer.sortingLayerName = "Player Character";
         transform.gameObject.layer = LayerMask.NameToLayer("Default");
         transform.Find("WallCollider").gameObject.layer = LayerMask.NameToLayer("Default");
-        isMouseHidden = false;
+        isPlayerHidden = false;
         HiddenText.color = Color.red;
     }
 
