@@ -5,6 +5,7 @@ public class HidingController : MonoBehaviour
 {
     public Text HiddenText;
     public Text DetectedText;
+    public GameObject Player;
 
     [HideInInspector]
     public bool isMouseHidden;
@@ -26,6 +27,8 @@ public class HidingController : MonoBehaviour
         isInHiddenArea = false;
         hidingSpotCoords = new Vector3(0, 0, 0);
         DetectedText.enabled = false;
+        // Get the Player GameObject
+
     }
 
     // Update is called once per frame
@@ -57,12 +60,15 @@ public class HidingController : MonoBehaviour
         if (Input.GetAxis("Vertical") < 0 && isInHiddenArea)
         {
             HidePlayer();
+            // Pauses Animatorc of Player
+            Player.GetComponent<Animator>().Play("Mouse-hide");
             DisablePlayerMovement();
         }
 
         if (Input.GetAxis("Vertical") > 0 && isMouseHidden)
         {
             UnhidePlayer();
+            Player.GetComponent<Animator>().Play("Mouse-Idle-4Legs");
             EnablePlayerMovement();
         }
     }
