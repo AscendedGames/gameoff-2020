@@ -20,7 +20,7 @@ public class SceneSwitchControl : MonoBehaviour
 
     public void BtnNewGame() //Load the Game
     {
-        SceneManager.LoadScene("Prototyping Scene");
+        SceneManager.LoadScene("Level 1");
         Time.timeScale = 1f;
     }
 
