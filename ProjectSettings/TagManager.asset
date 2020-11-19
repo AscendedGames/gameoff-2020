@@ -65,6 +65,9 @@ TagManager:
   - name: NPC Character
     uniqueID: 1146604119
     locked: 0
+  - name: Fore Foreground Sprites
+    uniqueID: 1822757729
+    locked: 0
   - name: Foreground Tilemap
     uniqueID: 3110781893
     locked: 0
