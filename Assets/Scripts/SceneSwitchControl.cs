@@ -7,6 +7,10 @@ public class SceneSwitchControl : MonoBehaviour
     private GameObject OptionsPanel;
     private GameObject CreditsPanel;
 
+    public void BtnQuitToMenu() //Load the Main Menu Scene
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void BtnMainMenu() //Load the Main Menu
     {
         OptionsPanel = GameObject.Find("OptionsPanel");
