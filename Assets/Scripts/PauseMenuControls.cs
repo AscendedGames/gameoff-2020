@@ -10,6 +10,8 @@ public class PauseMenuControls : MonoBehaviour
     public static bool GameIsPaused = false;
 
     [SerializeField]
+    private GameObject gameOver;
+    [SerializeField]
     private GameObject pauseMenuUI;
     [SerializeField]
     private GameObject pauseOptions;
@@ -33,11 +35,10 @@ public class PauseMenuControls : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && gameOver.activeInHierarchy != true)
         {
             if (GameIsPaused)
             {
-
                 BtnResume();
             }
             else

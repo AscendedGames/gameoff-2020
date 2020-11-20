@@ -6,7 +6,7 @@ public class NPCPursuitController : MonoBehaviour
     public Transform Player;
     public float PursuitSpeed;
     public GameObject VisionDetector;
-    public Text GameOverText;
+    public GameObject GameOverPanel;
     public float BrokenPursuitPauseTime;
 
     [HideInInspector]
@@ -23,7 +23,7 @@ public class NPCPursuitController : MonoBehaviour
     {
         _visionController = VisionDetector.GetComponent<VisionController>();
 
-        GameOverText.enabled = false;
+        GameOverPanel.SetActive(false);
         _isPlayerInSight = false;
         IsInPursuit = false;
         HasBrokenPursuit = false;
@@ -55,7 +55,7 @@ public class NPCPursuitController : MonoBehaviour
             {
                 transform.localRotation *= Quaternion.Euler(0, 180, 0);
             }
-            GameOverText.enabled = true;
+            GameOverPanel.SetActive(true);
             Time.timeScale = 0;
         }
     }
