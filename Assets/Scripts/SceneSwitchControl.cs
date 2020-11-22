@@ -16,6 +16,15 @@ public class SceneSwitchControl : MonoBehaviour
         currentPanel = MainMenuPanel;
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SceneManager.LoadScene("Level 1");
+            Time.timeScale = 1f;
+        }
+    }
+
     public void BtnQuitToMenu() //Load the Main Menu Scene & Sets timescale to 1
     {
         SceneManager.LoadScene("MainMenu");
