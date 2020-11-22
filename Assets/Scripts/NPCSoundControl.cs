@@ -28,7 +28,6 @@ public class NPCSoundControl : MonoBehaviour
         {
             if (GetComponent<NPCPursuitController>().IsInPursuit == false && GetComponent<NPCPursuitController>().HasBrokenPursuit == false)
             {
-                Debug.Log("Patroling!");
                 walkingSounds.enabled = true;
                 NPCAnimation.GetComponent<Animator>().Play("Scientist Walk");
                 walkingSounds.pitch = (Random.Range(1f, 1.1f));
@@ -36,7 +35,6 @@ public class NPCSoundControl : MonoBehaviour
             }
             else if (GetComponent<NPCPursuitController>().IsInPursuit == true)
             {
-                Debug.Log("In Pursuit!");
                 walkingSounds.enabled = true;
                 NPCAnimation.GetComponent<Animator>().Play("Scientist Walk");
                 walkingSounds.pitch = (Random.Range(1.3f, 1.5f));
@@ -44,7 +42,6 @@ public class NPCSoundControl : MonoBehaviour
             }
             else if (GetComponent<NPCPursuitController>().HasBrokenPursuit == true)
             {
-                Debug.Log("This Works?");
                 NPCAnimation.GetComponent<Animator>().Play("Scientist-Idle");
                 walkingSounds.enabled = false;
             }
