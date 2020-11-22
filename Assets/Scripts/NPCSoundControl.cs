@@ -26,22 +26,27 @@ public class NPCSoundControl : MonoBehaviour
 
         while (couroutineOn == true)
         {
-            if (GetComponent<NPCPursuitController>().IsInPursuit == false)
+            if (GetComponent<NPCPursuitController>().IsInPursuit == false && GetComponent<NPCPursuitController>().HasBrokenPursuit == false)
             {
+                Debug.Log("Patroling!");
+                walkingSounds.enabled = true;
                 NPCAnimation.GetComponent<Animator>().Play("Scientist Walk");
-                walkingSounds.pitch = (Random.Range(1f, 1.3f));
+                walkingSounds.pitch = (Random.Range(1f, 1.1f));
                 walkingSounds.Play();
             }
             else if (GetComponent<NPCPursuitController>().IsInPursuit == true)
             {
+                Debug.Log("In Pursuit!");
+                walkingSounds.enabled = true;
                 NPCAnimation.GetComponent<Animator>().Play("Scientist Walk");
-                walkingSounds.pitch = (Random.Range(1.3f, 1.8f));
+                walkingSounds.pitch = (Random.Range(1.3f, 1.5f));
                 walkingSounds.Play();
             }
             else if (GetComponent<NPCPursuitController>().HasBrokenPursuit == true)
             {
+                Debug.Log("This Works?");
                 NPCAnimation.GetComponent<Animator>().Play("Scientist-Idle");
-                walkingSounds.Stop();
+                walkingSounds.enabled = false;
             }
 
             yield return new WaitForSeconds(stepSoundDelay);
