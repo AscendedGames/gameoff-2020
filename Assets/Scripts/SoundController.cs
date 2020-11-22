@@ -35,6 +35,8 @@ public class SoundController : MonoBehaviour
         while (couroutineOn == true) {
             if (rigidBody.velocity.magnitude >= 0.2 && isGrounded)
             {
+                MouseRun.pitch = (Random.Range(2.2f, 3f));
+                MouseRun.volume = (Random.Range(0.358f, 0.580f));
                 MouseRun.Play();
             }
             else
