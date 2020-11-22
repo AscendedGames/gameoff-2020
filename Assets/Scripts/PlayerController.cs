@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor) && PlayerCanMove)
         {
+            animator.Play("Mouse-Jump");
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpForce);
         }
     }
