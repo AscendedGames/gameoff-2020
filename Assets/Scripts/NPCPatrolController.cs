@@ -86,7 +86,7 @@ public class NPCPatrolController : MonoBehaviour
                     PauseMovement();
                     _status.sprite = visionController.SearchingSprite;
                 }
-                else 
+                else
                 {
                     _npcPursuitController.HasBrokenPursuit = false;
                     _brokenPursuitPauseTimer = _npcPursuitController.BrokenPursuitPauseTime;
@@ -121,7 +121,7 @@ public class NPCPatrolController : MonoBehaviour
     {
         transform.Translate(2 * Time.deltaTime * MovementSpeed, 0, 0);
     }
-    
+
     private bool DoRandomDirectionChange()
     {
         if (!visionController.IsPlayerDetected)
