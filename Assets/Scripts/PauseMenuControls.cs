@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
+#pragma warning disable 0649 // variable declared but not used.
+
 public class PauseMenuControls : MonoBehaviour
 {
     private GameObject currentPausePanel;
