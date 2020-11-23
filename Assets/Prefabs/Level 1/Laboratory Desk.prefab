@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6495299756142703441}
   - component: {fileID: 6495299756142703440}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Walkable Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

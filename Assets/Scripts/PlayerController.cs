@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Transform isGroundedChecker; // This variable holds the empty GameObject that acts as our ground checker.
     public float checkGroundRadius; // Floating point variable to store the radius of the ground checker.
     public LayerMask groundLayer; // This variable determines the ground layer to enable the groundChecker to let us know we're on the ground
+    public LayerMask otherGroundLayer; // This variable determines the ground layer to enable the groundChecker to let us know we're on the ground
     public float rememberGroundedFor; // Helps keep player grounded to allow jumps slightly after the player has run off of a ledge
     float lastTimeGrounded; // Floating point variable to remember the last time the player was grounded
 
@@ -84,8 +85,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void CheckIfGrounded()
     {
-        Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
-        if (collider != null)
+        Collider2D colliderMain = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
+        Collider2D colliderSecondary = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, otherGroundLayer);
+
+        if (colliderMain != null || colliderSecondary != null)
         {
             isGrounded = true;
         }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4513563545912353855}
   - component: {fileID: 4513563545912353854}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Walkable Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,4 +193,4 @@ MonoBehaviour:
   - {x: -0.27163148, y: -0.3027203, z: 0}
   m_ShapePathHash: 615363037
   m_Mesh: {fileID: 0}
-  m_InstanceId: 18938
+  m_InstanceId: 26036
