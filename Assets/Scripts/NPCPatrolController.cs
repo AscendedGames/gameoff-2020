@@ -5,6 +5,8 @@ public class NPCPatrolController : MonoBehaviour
     public Transform Player;
     public float MovementSpeed;
     public SpriteRenderer spriteRenderer;
+    public LayerMask ignoreCollider;
+    public GameObject walkableArea;
     public Collider2D LeftPatrolBoundary;
     public Collider2D RightPatrolBoundary;
 
@@ -114,6 +116,12 @@ public class NPCPatrolController : MonoBehaviour
         if ((collision.name.Equals(LeftPatrolBoundary.name) || collision.name.Equals(RightPatrolBoundary.name)) && npcBodyCollider.IsTouching(collision) && _isInPursuit)
         {
             hasGonePastCheckpoint = true;
+        }
+        foreach (GameObject walkableArea in GameObject.FindGameObjectsWithTag("Misc Collider")) {
+            if (walkableArea.name == "Walkable Area")
+            {
+                Physics2D.IgnoreCollision(npcBodyCollider, walkableArea.GetComponent<BoxCollider2D>());
+            }
         }
     }
 
