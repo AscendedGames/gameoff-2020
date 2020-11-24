@@ -117,12 +117,6 @@ public class NPCPatrolController : MonoBehaviour
         {
             hasGonePastCheckpoint = true;
         }
-        foreach (GameObject walkableArea in GameObject.FindGameObjectsWithTag("Misc Collider")) {
-            if (walkableArea.name == "Walkable Area")
-            {
-                Physics2D.IgnoreCollision(npcBodyCollider, walkableArea.GetComponent<BoxCollider2D>());
-            }
-        }
     }
 
     private void MoveNormally()
