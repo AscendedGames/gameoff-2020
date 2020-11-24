@@ -23,7 +23,7 @@ TagManager:
   - Hidden
   - NPCs
   - Background
-  - Walkable Surface
+  - WalkableArea
   - 
   - 
   - 
