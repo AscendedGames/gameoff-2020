@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 535293100242829594}
   - component: {fileID: 8650417275185747847}
   - component: {fileID: 441607708211358008}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Walking Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 6967
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6273970830173739032}
   - component: {fileID: 2111916379926904985}
   - component: {fileID: 5759230323577081674}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Walking Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 6967
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 1973057502950413042}
   - component: {fileID: 7607003567278962658}
   - component: {fileID: 5663015767119857972}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Walking Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 6967
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
