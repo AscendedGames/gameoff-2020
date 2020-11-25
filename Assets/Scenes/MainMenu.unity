@@ -2329,8 +2329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c7bad4420096b43857ef1adc7e96c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 20b911034a7c46041aa6f9479047a746, type: 2}
-  masterVolumeSlider: {fileID: 1059152755}
   qualityDropdown: {fileID: 1123793079}
   resolutionDropdown: {fileID: 689406099}
 --- !u!1 &497948672
@@ -7168,7 +7166,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 20b911034a7c46041aa6f9479047a746,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: bea34836a2b083b438ec045d379cb666, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 17f1ce6f3ea8cb54b8e7bb214c87ad1c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
