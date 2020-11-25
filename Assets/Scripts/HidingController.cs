@@ -39,7 +39,7 @@ public class HidingController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("HidingArea"))
+        if (collision.gameObject.name.Equals("HidingArea") || collision.gameObject.name.Equals("TutorialHidingArea"))
         {
             hidingSpotCoords = collision.gameObject.transform.position;
             isInHiddenArea = true;
@@ -49,7 +49,7 @@ public class HidingController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.gameObject.name.Equals("HidingArea"))
+        if (collision.gameObject.name.Equals("HidingArea") || collision.gameObject.name.Equals("TutorialHidingArea"))
         {
             isInHiddenArea = false;
         }
