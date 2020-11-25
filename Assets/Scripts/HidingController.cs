@@ -6,6 +6,7 @@ public class HidingController : MonoBehaviour
     public Text HiddenText;
     public Text DetectedText;
     public GameObject Player;
+    public AudioSource HidingSound;
 
     [HideInInspector]
     public bool isPlayerHidden;
@@ -57,8 +58,9 @@ public class HidingController : MonoBehaviour
 
     private void CheckHideButtonsPressed()
     {
-        if (Input.GetAxis("Vertical") < 0 && isInHiddenArea)
+        if (Input.GetAxis("Vertical") < 0 && isInHiddenArea && isPlayerHidden == false)
         {
+            HidingSound.Play();
             HidePlayer();
             // Pauses Animatorc of Player
             Player.GetComponent<Animator>().Play("Mouse-hide");
