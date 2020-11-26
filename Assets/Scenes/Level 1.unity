@@ -55314,7 +55314,7 @@ PrefabInstance:
     - target: {fileID: 1675259961905085423, guid: ca6672711b2d37849af3c6cb9d53c12b,
         type: 3}
       propertyPath: EnableRandomPatrol
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca6672711b2d37849af3c6cb9d53c12b, type: 3}
