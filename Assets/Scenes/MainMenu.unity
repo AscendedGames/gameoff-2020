@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1979,35 +1979,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Project Lead:
-
-    Veriara
-
-
-    Lead Art Design:
-
-    Lil Lynx
-
-
-    Lead
-    Sound Design:
-
-    MrGoodHand
-
-
-    Story:
-
-    Aeternia
-
-
-    Game Idea:
-
-    Primal
-    Zero
-
-'
+  m_text: "\nA Moon of Cheese\n\nDesigned by:\nX Studios\n\nProject Lead:\nVeriara\n\n~--
+    || Game Script Design || --~\n\nCustom Control Scripts -\nVeriaia\nMr. Goodhand\n\n~--
+    || Art Design ||  --~\n\nAsset Design -\nMr. Goodhand\n\nNPC & Player character
+    Design & Animation:\nLil' Lynx\n\nSplash Screens -\nLil' Lynx\n\n~-- || Level
+    Design || --~\n\nVeriara\nMr. Goodhand\n\n~-- || Sound Design ||  --~\n\nLead
+    Sound Design:\nMr. GoodHand\n\n~-- || Music Credits ||  --~\n\nMain Menu Music
+    - \n\nOriginal song -\n\nCountdown to Myocardial Infarction - Peter Gresser (https://freemusicarchive.org/music/Peter_Gresser/Reimagine_The_Game/Countdown_to_Myocardial_Infarction)\n\n--
+    Main menu music remixed by --\nMr. Goodhand\n\nIn-game Music -\n\nEvasion - Matthew
+    Pablo (http://opengameart.org/users/matthewpablo)\n\nStory:\nAeternia\n\nGame
+    Idea:\nPrimal Zero\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7d388fbbbfe6c04a9362e264499239c, type: 2}
   m_sharedMaterial: {fileID: 8323428169004108113, guid: c7d388fbbbfe6c04a9362e264499239c,
@@ -2035,8 +2016,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 52
+  m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2401,7 +2382,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -4378,7 +4359,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1505579612}
   m_Direction: 2
   m_Value: 0.99999875
-  m_Size: 0.4979449
+  m_Size: 0.49794486
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
