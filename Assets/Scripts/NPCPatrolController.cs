@@ -5,8 +5,6 @@ public class NPCPatrolController : MonoBehaviour
     public Transform Player;
     public float MovementSpeed;
     public SpriteRenderer spriteRenderer;
-    public LayerMask ignoreCollider;
-    public GameObject walkableArea;
     public Collider2D LeftPatrolBoundary;
     public Collider2D RightPatrolBoundary;
 
