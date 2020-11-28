@@ -379,7 +379,7 @@ MonoBehaviour:
   - {x: 0.14518178, y: -0.76455784, z: 0}
   m_ShapePathHash: -560013025
   m_Mesh: {fileID: 0}
-  m_InstanceId: 19804
+  m_InstanceId: 72110
 --- !u!95 &1675259961905085420
 Animator:
   serializedVersion: 3
@@ -421,9 +421,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 2
-  MaxDistance: 50
+  MaxDistance: 12
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -431,8 +431,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
+      time: 0.004629135
+      value: 0.81552887
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -456,7 +456,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.7882004
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -486,7 +486,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.87018585
       inSlope: 0
       outSlope: 0
       tangentMode: 0
