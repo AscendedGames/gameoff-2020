@@ -77,7 +77,7 @@ public class VisionController : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.transform.tag == "Enemy" || hit.transform.tag == "Trigger")
+            if (hit.transform.tag == "Enemy" || hit.transform.tag == "Trigger" || hit.transform.tag == "Raycast Ignore")
                 continue;
 
             if (hit.transform.tag != "Player")
