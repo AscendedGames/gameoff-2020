@@ -44,7 +44,18 @@ public class DialogueController : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = string.Empty;
+        foreach (char letter in sentence)
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(0.025f);
+        }
     }
 
     void EndDialogue()
