@@ -44,7 +44,6 @@ public class SceneSwitchControl : MonoBehaviour
 
     public void BtnNewGame() //Load the Game (By the way.)
     {
-        //SceneManager.LoadScene("Level 1");
         levelLoader.TransitionToLevel("Opening");
         Time.timeScale = 1f;
     }
