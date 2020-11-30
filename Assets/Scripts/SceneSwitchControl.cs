@@ -9,12 +9,16 @@ public class SceneSwitchControl : MonoBehaviour
     private GameObject OptionsPanel;
     private GameObject CreditsPanel;
 
+    private LevelLoader levelLoader;
+
     private void Start()
     {
         OptionsPanel = GameObject.Find("OptionsPanel");
         MainMenuPanel = GameObject.Find("MainMenuPanel");
         CreditsPanel = GameObject.Find("CreditsPanel");
         currentPanel = MainMenuPanel;
+
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
     }
 
     public void Update()
@@ -40,7 +44,7 @@ public class SceneSwitchControl : MonoBehaviour
 
     public void BtnNewGame() //Load the Game (By the way.)
     {
-        SceneManager.LoadScene("Level 1");
+        levelLoader.TransitionToLevel("Opening");
         Time.timeScale = 1f;
     }
 
