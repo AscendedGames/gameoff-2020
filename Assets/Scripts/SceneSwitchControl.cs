@@ -42,9 +42,15 @@ public class SceneSwitchControl : MonoBehaviour
         currentPanel = MainMenuPanel;
     }
 
-    public void BtnNewGame() //Load the Game (By the way.)
+    public void BtnNewGame() //Load the Game
     {
         levelLoader.TransitionToLevel("Opening");
+        Time.timeScale = 1f;
+    }
+
+    public void BtnReset() //Load the Game
+    {
+        SceneManager.LoadScene("Level 1");
         Time.timeScale = 1f;
     }
 
