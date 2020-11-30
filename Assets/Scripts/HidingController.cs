@@ -16,6 +16,7 @@ public class HidingController : MonoBehaviour
     private PlayerController _playerController;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody2D;
+    private bool hasPerformedVictory;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class HidingController : MonoBehaviour
         isInHiddenArea = false;
         hidingSpotCoords = new Vector3(0, 0, 0);
         DetectedText.enabled = false;
+        hasPerformedVictory = false;
         // Get the Player GameObject
 
     }
@@ -40,17 +42,26 @@ public class HidingController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("HidingArea") || collision.gameObject.name.Equals("TutorialHidingArea"))
+        if (collision.gameObject.name.Equals("HidingArea") || collision.gameObject.name.Equals("TutorialHidingArea") || collision.gameObject.name.Equals("Win Hiding Area"))
         {
             hidingSpotCoords = collision.gameObject.transform.position;
             isInHiddenArea = true;
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.Equals("Win Hiding Area") && isPlayerHidden && !hasPerformedVictory)
+        {
+            hasPerformedVictory = true;
+            FindObjectOfType<WinController>().PerformVictory();
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.gameObject.name.Equals("HidingArea") || collision.gameObject.name.Equals("TutorialHidingArea"))
+        if (collision.gameObject.name.Equals("HidingArea") || collision.gameObject.name.Equals("TutorialHidingArea") || collision.gameObject.name.Equals("Win Hiding Area"))
         {
             isInHiddenArea = false;
         }
