@@ -62,6 +62,10 @@ public class DialogueController : MonoBehaviour
     {
         animator.SetBool("isOpen", false);
 
-        if (currentSceneName == "Opening") FindObjectOfType<LevelLoader>().TransitionToLevel("Level 1");
+        if (currentSceneName == "Opening")
+        {
+            //GetComponent<FadeMusic>().BtnFadeMusic();
+            FindObjectOfType<LevelLoader>().TransitionToLevel("Level 1");
+        }
     }
 }
