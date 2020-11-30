@@ -15,7 +15,6 @@ public class LevelLoader : MonoBehaviour
 
     public void TransitionToLevel(string levelName)
     {
-        Debug.Log("TransitionToLevel");
         StartCoroutine(LoadLevel(levelName));
     }
 
@@ -25,7 +24,6 @@ public class LevelLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        Debug.Log("We're here");
         SceneManager.LoadScene(levelName);
     }
 }
