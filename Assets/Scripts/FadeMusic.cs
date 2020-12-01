@@ -15,6 +15,7 @@ public class FadeMusic : MonoBehaviour
 
     public void BtnFadeMusic()
     {
+        Debug.Log("Getting here");
         StartCoroutine(FadeMenuMusic());
     }
 
