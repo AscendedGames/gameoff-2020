@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Level
+  - Hideable
+  - Enemy
+  - Trigger
+  - CaughtChecker
+  - Misc Collider
+  - Raycast Ignore
   layers:
   - Default
   - TransparentFX
@@ -13,11 +20,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Hidden
+  - NPCs
+  - Background
+  - WalkableArea
   - 
   - 
   - 
@@ -40,4 +47,31 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background Tilemap
+    uniqueID: 3243839163
+    locked: 0
+  - name: Background Sprites
+    uniqueID: 1635159187
+    locked: 0
+  - name: Middleground Sprites
+    uniqueID: 2181131131
+    locked: 0
+  - name: Foreground Sprites
+    uniqueID: 3057589107
+    locked: 0
+  - name: Player Character
+    uniqueID: 2863311839
+    locked: 0
+  - name: NPC Character
+    uniqueID: 1146604119
+    locked: 0
+  - name: Fore Foreground Sprites
+    uniqueID: 1822757729
+    locked: 0
+  - name: Foreground Tilemap
+    uniqueID: 3110781893
+    locked: 0
+  - name: UI
+    uniqueID: 594362181
     locked: 0
