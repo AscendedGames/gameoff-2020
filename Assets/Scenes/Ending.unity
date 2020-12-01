@@ -168,6 +168,9 @@ MonoBehaviour:
   dialogueDelayTime: 2
   dialogueParent: {fileID: 1812331528}
   dialogueBox: {fileID: 720876165}
+  CurrentTimeText: {fileID: 1826672099}
+  FastestTimeText: {fileID: 946417365}
+  TimeDifferenceText: {fileID: 1790091310}
 --- !u!1 &411106218
 GameObject:
   m_ObjectHideFlags: 0

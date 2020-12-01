@@ -7,6 +7,7 @@ public class WinController : MonoBehaviour
     public ScriptableObject musicFadeObject;
 
     private TimerController timerController;
+    private float fastestTime = 0.0f;
 
     void Start()
     {
@@ -24,9 +25,13 @@ public class WinController : MonoBehaviour
 
         float currentTime = timerController.time;
 
-        PlayerPrefs.SetFloat("Lastest Time", currentTime);
+        PlayerPrefs.SetFloat("Latest Time", currentTime);
 
-        float fastestTime = PlayerPrefs.HasKey("Fastest Time") ? PlayerPrefs.GetFloat("Fastest Time") : 0.0f;
+        if (PlayerPrefs.HasKey("Fastest Time"))
+        {
+            fastestTime = PlayerPrefs.GetFloat("Fastest Time");
+        }
+        else PlayerPrefs.SetFloat("Fastest Time", currentTime);
 
         if (currentTime < fastestTime) PlayerPrefs.SetFloat("Fastest Time", timerController.time);
 
