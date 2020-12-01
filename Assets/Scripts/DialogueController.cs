@@ -67,5 +67,10 @@ public class DialogueController : MonoBehaviour
             //GetComponent<FadeMusic>().BtnFadeMusic();
             FindObjectOfType<LevelLoader>().TransitionToLevel("Level 1");
         }
+
+        if (currentSceneName == "Ending")
+        {
+            FindObjectOfType<LevelLoader>().TransitionToLevel("Thank You");
+        }
     }
 }
