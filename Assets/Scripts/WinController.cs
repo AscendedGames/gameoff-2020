@@ -24,6 +24,8 @@ public class WinController : MonoBehaviour
 
         float currentTime = timerController.time;
 
+        PlayerPrefs.SetFloat("Lastest Time", currentTime);
+
         float fastestTime = PlayerPrefs.HasKey("Fastest Time") ? PlayerPrefs.GetFloat("Fastest Time") : 0.0f;
 
         if (currentTime < fastestTime) PlayerPrefs.SetFloat("Fastest Time", timerController.time);
