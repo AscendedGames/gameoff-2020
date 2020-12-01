@@ -1417,7 +1417,8 @@ MonoBehaviour:
     Pablo (http://opengameart.org/users/matthewpablo)\n(License: CC-BY 3.0 | Not
     Modified)\n\nEnding Music:\nSpace Theme by JSKNYC \n(License: CC-BY 3.0 | Not
     Modified)\n\nCredits Music:\nHappy Tune by syncopika \n(License: CC-BY 3.0 |
-    Not Modified)\n\n\n\nThank you so much for playing our game, we hope you enjoyed!"
+    Not Modified)\n\n\n\nThank you so much for playing our game, we hope you enjoyed
+    it!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7d388fbbbfe6c04a9362e264499239c, type: 2}
   m_sharedMaterial: {fileID: 8323428169004108113, guid: c7d388fbbbfe6c04a9362e264499239c,
