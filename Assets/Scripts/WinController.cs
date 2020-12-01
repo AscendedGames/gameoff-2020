@@ -22,6 +22,12 @@ public class WinController : MonoBehaviour
 
         timerController.doRunTimer = false;
 
+        float currentTime = timerController.time;
+
+        float fastestTime = PlayerPrefs.HasKey("Fastest Time") ? PlayerPrefs.GetFloat("Fastest Time") : 0.0f;
+
+        if (currentTime < fastestTime) PlayerPrefs.SetFloat("Fastest Time", timerController.time);
+
         FindObjectOfType<LevelLoader>().TransitionToLevel("Ending");
     }
 }
