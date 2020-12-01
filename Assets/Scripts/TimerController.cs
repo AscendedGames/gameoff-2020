@@ -6,6 +6,7 @@ public class TimerController : MonoBehaviour
 {
     public TMP_Text timerText;
     public bool doRunTimer;
+    public float time;
 
     private float startTime;
 
@@ -33,7 +34,7 @@ public class TimerController : MonoBehaviour
 
     void RunTimer()
     {
-        float time = Time.time - startTime;
+        time = Time.time - startTime;
 
         var formattedTime = FormatTime(time);
 
